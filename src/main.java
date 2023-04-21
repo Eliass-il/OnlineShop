@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class main {
     public static void main(String[] args) throws Exception {
@@ -10,6 +11,9 @@ public class main {
         customer1.setPhoneNumber("+48793453586");
         System.out.println(customer1);
         customer1.setStreet("Sarmacka 16");
+        Product product = new Product("Milk", 8.99f, "Milk Product of brand 'Milka' ");
+        Order order = new Order(customer1, new Date());
+        System.out.println(order);
 
 
 

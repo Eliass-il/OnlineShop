@@ -14,7 +14,6 @@ public class Customer implements Serializable {
     private String email;
     private final Address address;
     private static List<Customer> customersExtent = new ArrayList<>();  //Class extent
-    //overlapping
 
 
     public Customer (String firstName, String lastName, String phoneNumber, String email, Address address){
@@ -48,35 +47,6 @@ public class Customer implements Serializable {
                 '}';
     }
 
-    //extent
-    private static void addCustomer(Customer customer){
-        try {
-            if (customer == null){
-                throw new NullPointerException("Can not add null to extent");
-            }else {
-                customersExtent.add(customer);
-            }
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    public static void removeCustomer(Customer customer){
-        try {
-            if (customer == null){
-                throw new NullPointerException("Can not add null to extent");
-            }else {
-                customersExtent.remove(customer);
-            }
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    public static void showExtent() {
-        System.out.println("Extent of the class: " + Customer.class.getName());
-        for (Customer customer : customersExtent) {
-            System.out.println(customer);
-        }
-    }
 
     //getters
     public String getFirstName() {
@@ -157,6 +127,7 @@ public class Customer implements Serializable {
         address.setZipcode(zipcode);
     }
 
+
     //checkers
     private boolean checkFirstName(String firstName){
         String regex = "^[A-Z](?=.{1,29}$)[A-Za-z]*(?:\\h+[A-Z][A-Za-z]*)*$";
@@ -183,6 +154,7 @@ public class Customer implements Serializable {
         return matcher.matches();
     }
 
+
     //Serialization
     public static void writeExtent(ObjectOutputStream streamOut){
         try {
@@ -192,7 +164,6 @@ public class Customer implements Serializable {
             e.printStackTrace();
         }
     }
-
     public static void readExtent(ObjectInputStream streamIn){
         try {
             customersExtent = (ArrayList<Customer>)streamIn.readObject();
@@ -203,5 +174,35 @@ public class Customer implements Serializable {
         }
     }
 
+
+    //extent
+    private static void addCustomer(Customer customer){
+        try {
+            if (customer == null){
+                throw new NullPointerException("Can not add null to extent");
+            }else {
+                customersExtent.add(customer);
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public static void removeCustomer(Customer customer){
+        try {
+            if (customer == null){
+                throw new NullPointerException("Can not add null to extent");
+            }else {
+                customersExtent.remove(customer);
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public static void showExtent() {
+        System.out.println("Extent of the class: " + Customer.class.getName());
+        for (Customer customer : customersExtent) {
+            System.out.println(customer);
+        }
+    }
 }
 
